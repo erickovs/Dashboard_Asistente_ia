@@ -513,8 +513,14 @@
 
   // ─── UTILIDADES ───
 
-  function fv(v) {
-    return v && v !== '' ? parseFloat(v) : null;
+function fv(v) {
+    if (!v || v === '') return null;
+    const cleaned = v.replace('%', '').replace(',', '.').trim();
+    const num = parseFloat(cleaned);
+    if (isNaN(num)) return null;
+    // Si el valor original tenía %, ya es un porcentaje, convertir a decimal
+    if (v.includes('%')) return num / 100;
+    return num;
   }
 
   function getPeriods(type) {
