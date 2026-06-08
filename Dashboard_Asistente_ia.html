@@ -326,7 +326,7 @@ function getRowsFor(type, period) {
 }
 
 function fmtN(v) { return v === null ? '—' : Math.round(v).toLocaleString('es'); }
-function fmtPct(v) { return v === null ? '—' : (v * 100).toFixed(1) + '%'; }
+function fmtPct(v) { return v === null ? '—' : v.toFixed(1) + '%'; }
 function fmtDelta(varN) {
   if (varN === null || varN === undefined) return '<span class="kpi-delta base">período base</span>';
   const pct = Math.round(varN * 100);
