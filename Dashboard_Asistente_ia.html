@@ -329,7 +329,7 @@ function fmtN(v) { return v === null ? '—' : Math.round(v).toLocaleString('es'
 function fmtPct(v) { return v === null ? '—' : (v * 100).toFixed(1) + '%'; }
 function fmtDelta(varN) {
   if (varN === null || varN === undefined) return '<span class="kpi-delta base">período base</span>';
-  const pct = Math.round(varN * 100);
+  const pct = Math.round(varN * 100 * 100) / 100;
   if (varN > 0) return `<span class="kpi-delta up">▲ +${pct}% vs anterior</span>`;
   if (varN < 0) return `<span class="kpi-delta down">▼ ${pct}% vs anterior</span>`;
   return '<span class="kpi-delta neutral">— sin cambio</span>';
